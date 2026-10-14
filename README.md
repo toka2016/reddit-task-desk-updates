@@ -4,15 +4,21 @@ Windows application downloads and the signed update feed for Reddit Task Desk.
 
 ## Download
 
-[Download RedditTaskDesk-1.6.0.0.exe](https://raw.githubusercontent.com/toka2016/reddit-task-desk-updates/main/RedditTaskDesk-1.6.0.0.exe)
+[Download RedditTaskDesk-1.6.1.0.exe](https://raw.githubusercontent.com/toka2016/reddit-task-desk-updates/main/RedditTaskDesk-1.6.1.0.exe)
 
 Close your previous copy, keep the application in a writable folder, then run the downloaded executable. Windows with .NET Framework 4.7.2 or later is required. Existing settings, profiles, tasks and reports stay in the same data folder. If you use a custom `--data-dir`, continue using that same argument.
 
-## Prompt mode in 1.6.0
+## Automatic comments in 1.6.1
+
+Open **Tasks > Edit > Task & limits > Comment publication** and enable **Publish comments automatically**. This option works in Fields and Prompt modes and remains off by default for existing and new tasks. Enabled tasks can publish eligible comments without a separate confirmation, within saved community/action limits and the remaining session time/token budget. Comments are verified before they count as confirmed, and reports record whether authorization came from the task setting or a later human approval.
+
+Explicit requests to prepare drafts for review remain in the approval queue; remove such wording from your task prompt when you want automatic publication. Changing the checkbox does not publish old pending drafts. Unsent automatic comments cancel on stop or restart, and uncertain submissions are never retried automatically. All community, account and duplicate protections remain active.
+
+## Prompt mode
 
 Open **Tasks > Edit > Task setup > Prompt** and enter the full task in **Task prompt**. Saved community selections and comment, upvote, review, search and scroll fields are disabled and ignored. The model creates a finite session plan from the prompt before browsing; actual limits and chosen communities appear in the session report. Communities can be different from those saved in Fields mode.
 
-The chosen profile, model, session duration, token threshold and schedule remain controlled by the app. Comment drafts still require approval before publication. If an action is not requested, it stays disabled. If comments or upvotes are explicitly requested without a count, default ceilings are 3 drafts or 5 upvotes; these are maxima, not activity targets.
+The chosen profile, model, session duration, token threshold and schedule remain controlled by the app. Comment publication follows the task checkbox; explicit review drafts still require approval. If an action is not requested, it stays disabled. If comments or upvotes are explicitly requested without a count, default ceilings are 3 comments or 5 upvotes; these are maxima, not activity targets.
 
 Community candidates are selected before browsing, then checked for relevance and applicable participation rules. This release does not add a site-wide discovery search. Existing tasks keep Fields mode until you choose Prompt.
 
