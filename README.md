@@ -4,9 +4,17 @@ Windows application downloads and the signed update feed for Reddit Task Desk.
 
 ## Download
 
-[Download RedditTaskDesk-1.5.1.0.exe](https://raw.githubusercontent.com/toka2016/reddit-task-desk-updates/main/RedditTaskDesk-1.5.1.0.exe)
+[Download RedditTaskDesk-1.6.0.0.exe](https://raw.githubusercontent.com/toka2016/reddit-task-desk-updates/main/RedditTaskDesk-1.6.0.0.exe)
 
 Close your previous copy, keep the application in a writable folder, then run the downloaded executable. Windows with .NET Framework 4.7.2 or later is required. Existing settings, profiles, tasks and reports stay in the same data folder. If you use a custom `--data-dir`, continue using that same argument.
+
+## Prompt mode in 1.6.0
+
+Open **Tasks > Edit > Task setup > Prompt** and enter the full task in **Task prompt**. Saved community selections and comment, upvote, review, search and scroll fields are disabled and ignored. The model creates a finite session plan from the prompt before browsing; actual limits and chosen communities appear in the session report. Communities can be different from those saved in Fields mode.
+
+The chosen profile, model, session duration, token threshold and schedule remain controlled by the app. Comment drafts still require approval before publication. If an action is not requested, it stays disabled. If comments or upvotes are explicitly requested without a count, default ceilings are 3 drafts or 5 upvotes; these are maxima, not activity targets.
+
+Community candidates are selected before browsing, then checked for relevance and applicable participation rules. This release does not add a site-wide discovery search. Existing tasks keep Fields mode until you choose Prompt.
 
 ## Automatic updates
 
