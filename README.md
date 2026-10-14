@@ -4,15 +4,19 @@ Windows application downloads and the signed update feed for Reddit Task Desk.
 
 ## Download
 
-[Download RedditTaskDesk-1.8.0.0.exe](https://raw.githubusercontent.com/toka2016/reddit-task-desk-updates/main/RedditTaskDesk-1.8.0.0.exe)
+[Download RedditTaskDesk-1.8.1.0.exe](https://raw.githubusercontent.com/toka2016/reddit-task-desk-updates/main/RedditTaskDesk-1.8.1.0.exe)
 
 Close your previous copy, keep the application in a writable folder, then run the downloaded executable. Windows with .NET Framework 4.7.2 or later is required. Existing settings, profiles, tasks and reports stay in the same data folder. If you use a custom `--data-dir`, continue using that same argument.
 
-## Red blocked tasks and repair in 1.8.0
+## Manual-intervention pauses in 1.8.1
 
-Technical problems stop affected sessions as **Blocked**, with red task/profile indicators and a panel showing the reason, diagnostic code and repair steps. Normal runs and schedules stay paused until the issue is repaired. Profile-level issues pause other tasks sharing the same profile. Saved schedules are preserved, and pause records survive restarting the application.
+This release corrects overly broad pauses introduced in 1.8.0. A persistent red pause is reserved for manual intervention, such as a visible CAPTCHA, required sign-in/account verification, account mismatch, explicit access restriction or an uncertain submitted action. Critical storage and unresolved browser callbacks also require attention.
 
-After fixing the reported problem, choose **Retry after fix**. It starts a fresh session using the current task settings and keeps the barrier active until that session succeeds. Failed or interrupted retries stay blocked. Reports retain original outcomes and retry history; uncertain submissions are never replayed. **View issue report** opens the source session. The app checks supported visible CAPTCHA/login/access screens and provides a model report_issue tool for technical blockers. CAPTCHA is completed manually; unsupported future site layouts may require the agent or user to identify the issue.
+Ordinary page-loading, network, model and known no-click errors do not disable future tasks. The agent can handle recoverable browser errors within the remaining session limits; a successful run with recorded errors is shown as **Completed with errors**. Fatal generic errors end only the current session as **Failed**. Reports retain the actual errors and action outcomes.
+
+On startup, ordinary-error pauses from 1.8.0 are released when their source session is available and shows no uncertain action or manual-intervention issue. Historical reports remain intact, and the release reason is recorded without claiming the original error was repaired. True manual pauses continue to use **Retry after fix**. Unknown submitted actions are never replayed.
+
+Page loading now waits for up to 20 seconds of readable rendered content, including supported shadow content, without repeating navigation. Timeout diagnostics contain structural page paths and counts instead of private page text. This update does not add Home/Popular feed scope; tasks still operate in their planned communities.
 
 ## Profile tasks and organized reports in 1.7.0
 
