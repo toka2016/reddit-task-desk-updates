@@ -4,9 +4,15 @@ Windows application downloads and the signed update feed for Reddit Task Desk.
 
 ## Download
 
-[Download RedditTaskDesk-1.6.1.0.exe](https://raw.githubusercontent.com/toka2016/reddit-task-desk-updates/main/RedditTaskDesk-1.6.1.0.exe)
+[Download RedditTaskDesk-1.7.0.0.exe](https://raw.githubusercontent.com/toka2016/reddit-task-desk-updates/main/RedditTaskDesk-1.7.0.0.exe)
 
 Close your previous copy, keep the application in a writable folder, then run the downloaded executable. Windows with .NET Framework 4.7.2 or later is required. Existing settings, profiles, tasks and reports stay in the same data folder. If you use a custom `--data-dir`, continue using that same argument.
+
+## Profile tasks and organized reports in 1.7.0
+
+In **Tasks**, select a profile in the left panel to see its tasks, or choose **All profiles**. New tasks preselect the current profile. **Profiles > View tasks** and **Tasks > View task reports** provide direct navigation.
+
+**Sessions & reports** now groups history by **profile > task**, with the newest sessions first. **Open task report** opens a saved aggregate containing confirmed actions, pending/unknown outcomes, token totals, errors and links to every session report. Tasks without sessions have an empty state; deleted or reassigned tasks remain accessible in historical groups under their original profile. Existing session files and daily reports stay in their original locations, and grouping uses stable identities rather than display names.
 
 ## Automatic comments in 1.6.1
 
