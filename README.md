@@ -4,52 +4,38 @@ Windows application downloads and the signed update feed for Reddit Task Desk.
 
 ## Download
 
-[Download RedditTaskDesk-1.8.1.0.exe](https://raw.githubusercontent.com/toka2016/reddit-task-desk-updates/main/RedditTaskDesk-1.8.1.0.exe)
+[Download RedditTaskDesk-1.9.0.0.exe](https://raw.githubusercontent.com/toka2016/reddit-task-desk-updates/main/RedditTaskDesk-1.9.0.0.exe)
 
-Close your previous copy, keep the application in a writable folder, then run the downloaded executable. Windows with .NET Framework 4.7.2 or later is required. Existing settings, profiles, tasks and reports stay in the same data folder. If you use a custom `--data-dir`, continue using that same argument.
+Close your previous copy, keep the application in a writable folder, then run the executable. Windows with .NET Framework 4.7.2 or later is required. Existing settings, profiles, tasks and reports stay in the same data folder. If you use a custom `--data-dir`, continue using that argument.
 
-## Manual-intervention pauses in 1.8.1
+## Instruction visibility and control in 1.9.0
 
-This release corrects overly broad pauses introduced in 1.8.0. A persistent red pause is reserved for manual intervention, such as a visible CAPTCHA, required sign-in/account verification, account mismatch, explicit access restriction or an uncertain submitted action. Critical storage and unresolved browser callbacks also require attention.
+**Settings > Agent Rules** remains the shared participation guidance editor. **Settings > Workflow instructions** now exposes editable General workflow, Prompt planning, Adaptive browsing and Comment publication guidance, plus five Prompt planning defaults. An empty section stays empty. Changes apply to new sessions; queued sessions and pending drafts retain their saved instructions.
 
-Ordinary page-loading, network, model and known no-click errors do not disable future tasks. The agent can handle recoverable browser errors within the remaining session limits; a successful run with recorded errors is shown as **Completed with errors**. Fatal generic errors end only the current session as **Failed**. Reports retain the actual errors and action outcomes.
+**Preview instructions** shows app-generated developer instructions, the task prompt and tool definitions without connecting or running a model. The publication reference uses explicit placeholders. **Tasks > Instructions** previews the saved task/settings; the Settings preview can include unsaved drafts. **Sessions & reports > Recorded instructions** shows the recorded request payloads and dispatch state for the selected session, including accepted-plan and publication phases. Session reports save the same trace. Historical payloads that were not recorded are not invented. Secret-like values are redacted in saved/viewed copies.
 
-On startup, ordinary-error pauses from 1.8.0 are released when their source session is available and shows no uncertain action or manual-intervention issue. Historical reports remain intact, and the release reason is recorded without claiming the original error was repaired. True manual pauses continue to use **Retry after fix**. Unknown submitted actions are never replayed.
+**Settings > App controls** explains the fixed execution checks, supported bounds and their reasons. Account identity, saved action limits, exact-text authorization, disclosure and uncertain-action protection remain enforced. This view covers Reddit Task Desk's assembled instructions; it does not expose or override OpenAI service/model instructions or externally configured Codex instructions.
 
-Page loading now waits for up to 20 seconds of readable rendered content, including supported shadow content, without repeating navigation. Timeout diagnostics contain structural page paths and counts instead of private page text. This update does not add Home/Popular feed scope; tasks still operate in their planned communities.
+## Home, Popular and All
 
-## Profile tasks and organized reports in 1.7.0
+In Fields mode choose the browsing scope **Home**, **Popular**, **All**, or selected **Communities**. In Prompt mode name the feed you want. Home uses the actual signed-in Reddit homepage at `/`, not Popular. A feed task can open posts observed in that feed and read those posts' real community rules; it does not invent rules for r/popular or grant unrestricted community browsing. Search is disabled for feed-only tasks. Returning to the feed and scrolling may reveal more posts while retaining the shared action ceilings.
 
-In **Tasks**, select a profile in the left panel to see its tasks, or choose **All profiles**. New tasks preselect the current profile. **Profiles > View tasks** and **Tasks > View task reports** provide direct navigation.
+Observed post provenance is saved in the session report. The app still requires reading the selected post before an action, checks the account and limits, and records only verified results as confirmed.
 
-**Sessions & reports** now groups history by **profile > task**, with the newest sessions first. **Open task report** opens a saved aggregate containing confirmed actions, pending/unknown outcomes, token totals, errors and links to every session report. Tasks without sessions have an empty state; deleted or reassigned tasks remain accessible in historical groups under their original profile. Existing session files and daily reports stay in their original locations, and grouping uses stable identities rather than display names.
+## Manual-intervention pauses
 
-## Automatic comments in 1.6.1
-
-Open **Tasks > Edit > Task & limits > Comment publication** and enable **Publish comments automatically**. This option works in Fields and Prompt modes and remains off by default for existing and new tasks. Enabled tasks can publish eligible comments without a separate confirmation, within saved community/action limits and the remaining session time/token budget. Comments are verified before they count as confirmed, and reports record whether authorization came from the task setting or a later human approval.
-
-Explicit requests to prepare drafts for review remain in the approval queue; remove such wording from your task prompt when you want automatic publication. Changing the checkbox does not publish old pending drafts. Unsent automatic comments cancel on stop or restart, and uncertain submissions are never retried automatically. All community, account and duplicate protections remain active.
-
-## Prompt mode
-
-Open **Tasks > Edit > Task setup > Prompt** and enter the full task in **Task prompt**. Saved community selections and comment, upvote, review, search and scroll fields are disabled and ignored. The model creates a finite session plan from the prompt before browsing; actual limits and chosen communities appear in the session report. Communities can be different from those saved in Fields mode.
-
-The chosen profile, model, session duration, token threshold and schedule remain controlled by the app. Comment publication follows the task checkbox; explicit review drafts still require approval. If an action is not requested, it stays disabled. If comments or upvotes are explicitly requested without a count, default ceilings are 3 comments or 5 upvotes; these are maxima, not activity targets.
-
-Community candidates are selected before browsing, then checked for relevance and applicable participation rules. This release does not add a site-wide discovery search. Existing tasks keep Fields mode until you choose Prompt.
+The 1.8.1 correction remains: ordinary loading, network, model and known no-click errors do not disable future tasks. A run can fail or complete with recoverable errors. Persistent red pauses require manual intervention, such as CAPTCHA, required sign-in/account verification, account mismatch, access restriction, uncertain submitted action, or critical history/storage/callback problems. Use **Retry after fix** after addressing a manual issue. Unknown actions are never replayed automatically.
 
 ## Automatic updates
 
-Version 1.5.1 includes this update source by default:
+In **Settings > Updates**, keep **Automatic updates** enabled. The default feed is:
 
 `https://raw.githubusercontent.com/toka2016/reddit-task-desk-updates/main/latest.json`
 
-In **Settings > Updates**, keep **Automatic updates** enabled. The application checks while idle at startup and approximately every six hours while running. It downloads a newer release and waits until the app is idle, with no queued sessions, unsaved settings or imminent scheduled task, before replacement and restart. Previously disabled automatic updates and custom update sources remain unchanged.
+The app checks while idle at startup and approximately every six hours while running. It waits for no active or queued sessions, unsaved edits, owned dialogs or imminent scheduled task before replacement and restart. Existing disabled update settings and custom sources stay unchanged.
 
-The updater authenticates an RSA-SHA256 signed manifest using its embedded public key, then checks the executable size, SHA-256, product identity and version before installation. This is an application update signature; the executable does not have a Windows Authenticode signature.
-
-The private signing key and application data are not stored in this repository. This repository contains only public release binaries, the signed feed and this documentation. Future updates become available when a newer signed release is published here.
+An RSA-SHA256 signed manifest is verified using the embedded public key, followed by executable size, SHA-256, product and version checks. This application update signature is separate from Windows Authenticode; the executable is not Authenticode-signed. The private signing key and application data are never stored in this public repository.
 
 ## Validation limits
 
-The build and offline update/migration tests were run against Microsoft .NET Framework 4.7.2 reference assemblies. Native Windows GUI operation and the Windows replacement/restart process still require validation on Windows.
+Builds target Microsoft .NET Framework 4.7.2 references. Tests use offline controller/browser peers, DOM fixtures and a Mono/Xvfb UI harness. Native Windows UI, actual Windows update replacement/restart and live AdsPower/Reddit/model execution remain unverified in this environment. No live social actions or paid inference are used for release verification.
