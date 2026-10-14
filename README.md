@@ -14,7 +14,7 @@ Version 1.5.1 includes this update source by default:
 
 `https://raw.githubusercontent.com/toka2016/reddit-task-desk-updates/main/latest.json`
 
-In **Settings > Updates**, keep **Automatic updates** enabled. The application checks while idle at startup and approximately every six hours while running. It downloads a newer release and waits until the app is idle, with no pending comment reviews, unsaved settings or imminent scheduled task, before replacement and restart. Previously disabled automatic updates and custom update sources remain unchanged.
+In **Settings > Updates**, keep **Automatic updates** enabled. The application checks while idle at startup and approximately every six hours while running. It downloads a newer release and waits until the app is idle, with no queued sessions, unsaved settings or imminent scheduled task, before replacement and restart. Previously disabled automatic updates and custom update sources remain unchanged.
 
 The updater authenticates an RSA-SHA256 signed manifest using its embedded public key, then checks the executable size, SHA-256, product identity and version before installation. This is an application update signature; the executable does not have a Windows Authenticode signature.
 
