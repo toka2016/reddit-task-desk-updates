@@ -4,9 +4,19 @@ Windows application downloads and the signed update feed for Reddit Task Desk.
 
 ## Download
 
-[Download RedditTaskDesk-1.9.0.0.exe](https://raw.githubusercontent.com/toka2016/reddit-task-desk-updates/main/RedditTaskDesk-1.9.0.0.exe)
+[Download RedditTaskDesk-1.10.0.0.exe](https://raw.githubusercontent.com/toka2016/reddit-task-desk-updates/main/RedditTaskDesk-1.10.0.0.exe)
 
 Close your previous copy, keep the application in a writable folder, then run the executable. Windows with .NET Framework 4.7.2 or later is required. Existing settings, profiles, tasks and reports stay in the same data folder. If you use a custom `--data-dir`, continue using that argument.
+
+## Calmer browsing in 1.10.0
+
+Open **Settings > Browsing pace** to set a minimum time on each readable page, an interval between supported browser actions, and a pause after scrolling. The initial settings are **12 seconds**, **3 seconds**, and **2 seconds**. These are minimums: time already spent reading or reasoning counts, so the app waits only for the remaining time. Set a value to zero to disable that added wait, use **Calm defaults** to restore the initial pace, or **No added waits** to clear all three delays. Click **Save browsing pace** to apply changes to new sessions.
+
+**Reuse the current page** checks the browser's actual URL and readable state before avoiding a redundant reload. The app can start from an already open supported Reddit page instead of resetting it to Home. Identity checks, actual task scope and observed feed provenance still apply. No close-browser operation is added; browser lifetime also depends on the external AdsPower connector.
+
+Waits run locally without model requests, cancel with Stop and remain inside the existing session duration. That duration is an upper bound, not a target to fill. Reports show the saved pace and actual added wait time; waiting is not reported as human reading. Queued sessions and later approvals retain their recorded pace. Historical sessions without a pace snapshot keep the previous behavior for later approvals. Unsaved pace edits delay automatic update installation.
+
+A manual challenge appearing during a wait is checked before navigation or action. An external page change during a wait cannot authorize a click on an unrelated discussion. Post-submission verification is not artificially delayed; uncertain submitted actions still require manual inspection.
 
 ## Instruction visibility and control in 1.9.0
 
