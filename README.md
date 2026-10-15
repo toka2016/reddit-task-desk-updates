@@ -4,9 +4,15 @@ Windows application downloads and the signed update feed for Reddit Task Desk.
 
 ## Download
 
-[Download RedditTaskDesk-1.10.0.0.exe](https://raw.githubusercontent.com/toka2016/reddit-task-desk-updates/main/RedditTaskDesk-1.10.0.0.exe)
+[Download RedditTaskDesk-1.10.1.0.exe](https://raw.githubusercontent.com/toka2016/reddit-task-desk-updates/main/RedditTaskDesk-1.10.1.0.exe)
 
 Close your previous copy, keep the application in a writable folder, then run the executable. Windows with .NET Framework 4.7.2 or later is required. Existing settings, profiles, tasks and reports stay in the same data folder. If you use a custom `--data-dir`, continue using that argument.
+
+## A clear app shortcut in 1.10.1
+
+Use **Reddit Task Desk** on your desktop or in the Windows Start menu to reopen the app after an update. The first supported Windows launch attempts to create these per-user shortcuts; shortcut errors remain visible without preventing the app from starting. **Settings > Launch app** shows the actual executable location, individual shortcut results, **Create / repair shortcuts**, and **Open app folder**. Shortcuts preserve the active data folder. They do not enable startup with Windows.
+
+The updater continues replacing the running executable in place, so its filename may retain an older version number. The shortcut remains the launch entry. New update handoffs use `.tmp` candidates and `.bak` recovery backups instead of additional launchable `.exe` copies beside the app. Upgrades from older versions still accept their exact legacy handoff paths; old recovery files are not silently deleted. Keep the executable in its folder, or repair the shortcuts after moving it. Conflicting unrelated shortcuts are preserved and reported.
 
 ## Calmer browsing in 1.10.0
 
