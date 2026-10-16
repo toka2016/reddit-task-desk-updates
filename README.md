@@ -4,19 +4,25 @@ Windows application downloads and the signed update feed for Reddit Task Desk.
 
 ## Download
 
-[Download RedditTaskDesk-1.13.0.0.exe](https://raw.githubusercontent.com/toka2016/reddit-task-desk-updates/main/RedditTaskDesk-1.13.0.0.exe)
+[Download RedditTaskDesk-1.14.0.0.exe](https://raw.githubusercontent.com/toka2016/reddit-task-desk-updates/main/RedditTaskDesk-1.14.0.0.exe)
 
 Close your previous copy, keep the application in a writable folder, then run the executable. Windows with .NET Framework 4.7.2 or later is required. Existing settings, profiles, tasks and reports stay in the same data folder. If you use a custom `--data-dir`, continue using that argument.
 
-## Comment interactions and task duplication in 1.13.0
+## Prompt-only tasks in 1.14.0
 
-In **Tasks > Edit > Task & limits**, enable **Allow upvotes on comments** and/or **Allow replies to comments**. Existing tasks keep both options off until selected. The agent must first read the parent post and inspect the visible comments. Comment actions retain the exact comment ID, author and permalink. Replies use the saved human-review or automatic-publication mode and preserve the exact authorized parent and text.
+Write task scope, communities or feed, action ceilings, post/comment targets, publication intent and browsing pace in **Task prompt**. **Session limit**, **Token stop** and **Schedule** remain explicit controls, together with the selected profile and model. The agent accepts a finite plan before browsing, and the report records its resolved permissions and pace.
 
-Post and comment upvotes share the upvote ceiling; top-level comments and replies share the comment ceiling. Community limits are shared too. Zero disables that action kind. Duplicate checks distinguish individual comment targets and prevent repeat voting on the same target across profiles. An uncertain action is not retried automatically. Reports distinguish **Upvote post**, **Upvote comment**, **Comment** and **Reply to comment** and keep confirmed results separate from attempts.
+There is no Fields mode, separate Browsing pace settings page or Approvals list. **Instructions** contains all shared Agent Rules and Workflow, Prompt planning, Adaptive browser and Publication guides, with read-only App Controls and an effective preview. Saved drafts stay in reports; authorized publication runs without an additional confirmation.
 
-In **Tasks**, select a task and click **Duplicate**. Choose destination profiles or use **Select all**, then **Create copies**. Every copy has a new task ID and independent future reports. Its configuration is copied, but existing sessions, action history, blockers and consumed schedule slots are not. Copies have scheduling off unless **Copy schedule enabled state** is selected. Duplication itself starts no task. Profiles with no expected Reddit username can receive draft copies; configure the account before running them.
+Existing task controls are converted to visible editable prompt text. Historical sessions and pending review records are preserved, never silently approved. Custom and empty shared guides remain unchanged. Post/comment actions keep shared ceilings, exact-target verification and duplicate/uncertain-action protection.
 
-Custom or empty Agent Rules stay unchanged. When comment options are enabled, the complete earlier bundled post-only default is interpreted with the current comment-target guidance, with that distinction shown in effective instructions. Saved historical snapshots remain unchanged.
+After a new task ends, the app attempts to close only its attached AdsPower profile once, verifies its inactive state and records the result. Cleanup waits before the next task. Manual challenges, uncertain actions and unsent text detected in the currently attached page keep the browser open for inspection. Other tabs are not scanned for drafts. Connection checks and profile imports never close profiles.
+
+**Tasks → Duplicate** still creates independent copies for selected profiles or **Select all**, with schedules off unless their enabled state is explicitly copied.
+
+## Earlier releases
+
+The sections below describe historical releases. The prompt-only interface above replaces their separate task switches and Browsing pace controls.
 
 ## Natural browsing in 1.12.0
 
