@@ -1,11 +1,15 @@
 # Reddit Task Desk updates
 
-Current release: **1.16.2**.
+Current release: **1.16.3**.
 
-Use the existing application shortcut and automatic updater, or download [RedditTaskDesk-1.16.2.0.exe](https://raw.githubusercontent.com/toka2016/reddit-task-desk-updates/main/RedditTaskDesk-1.16.2.0.exe).
+This repository hosts the signed Windows update feed and versioned executable for Reddit Task Desk. The app verifies the signed manifest and executable hash before installing an update.
 
-Version 1.16.2 supports textarea-backed Reddit search, prefers observed source links for returning to posts, and restores scrolling after inspections or actions using fresh actual-page verification. Read-only comment inspection remains available when comment actions are disabled. Cleanup recognizes the official AdsPower MCP's direct Inactive result and preserves genuine drafts. Profile-list errors report known failure categories without exposing private response data.
+## Release 1.16.3
 
-Local synthetic validation does not guarantee every live Reddit layout. The underlying user-side profile-list API error remains unverified. Existing custom instructions, profiles, tasks, schedules and historical reports are preserved.
+Browser history return now uses a guarded Back operation with actual arrival verification. Visible Reddit search filters and community sorting menus have additional supported forms. When a requested search filter is unavailable, readable same-query results can be returned with their actual filters and an explicit incomplete status.
 
-The signed manifest is latest.json. The updater verifies signature, executable size and SHA-256 before replacement. This repository contains no credentials or user account data.
+User task/profile data and custom instructions remain unchanged. Profile import's unclassified plain-text error is not claimed fixed; it needs the actual underlying error for diagnosis.
+
+The release was checked with offline DOM and MCP fixtures; those checks do not guarantee every live Reddit layout. No live Reddit action or user profile was used for verification.
+
+Use the app's **Settings → Updates** or the versioned executable referenced in `latest.json`.
