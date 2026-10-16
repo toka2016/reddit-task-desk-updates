@@ -4,9 +4,17 @@ Windows application downloads and the signed update feed for Reddit Task Desk.
 
 ## Download
 
-[Download RedditTaskDesk-1.11.0.0.exe](https://raw.githubusercontent.com/toka2016/reddit-task-desk-updates/main/RedditTaskDesk-1.11.0.0.exe)
+[Download RedditTaskDesk-1.11.1.0.exe](https://raw.githubusercontent.com/toka2016/reddit-task-desk-updates/main/RedditTaskDesk-1.11.1.0.exe)
 
 Close your previous copy, keep the application in a writable folder, then run the executable. Windows with .NET Framework 4.7.2 or later is required. Existing settings, profiles, tasks and reports stay in the same data folder. If you use a custom `--data-dir`, continue using that argument.
+
+## One clear launch file and an app icon in 1.11.1
+
+Continue opening the same **Reddit Task Desk** shortcut or the current executable. Updates replace that file in place. New update candidates and retained recovery backups are stored in a private hidden subfolder on the same drive, keeping them out of the main application-folder view. **Settings > Launch app** shows the current executable and provides **Organize update files** for older updater-owned backups.
+
+Completed older backups are moved only when their private update plan, successful startup marker and file hashes establish that they belong to this app and the old helper has finished. Recovery copies remain available. Unrecognized files and manually downloaded versioned executables are preserved; filenames alone never authorize moving them. Profiles, tasks, reports and the active data folder stay unchanged.
+
+The executable now contains an original navy-and-coral task icon in multiple resolutions. The app window, taskbar, notification-area icon and app shortcuts use it. There is no loose icon file to keep beside the executable.
 
 ## Automatic AdsPower profile import in 1.11.0
 
