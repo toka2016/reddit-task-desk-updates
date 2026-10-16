@@ -1,11 +1,11 @@
 # Reddit Task Desk updates
 
-Current release: **1.15.0**.
+Current release: **1.16.0**.
 
-This repository serves the signed update feed for Reddit Task Desk. Use the existing application shortcut and its automatic updater.
+Use the existing application shortcut and automatic updater, or download [RedditTaskDesk-1.16.0.0.exe](https://raw.githubusercontent.com/toka2016/reddit-task-desk-updates/main/RedditTaskDesk-1.16.0.0.exe).
 
-Version 1.15.0 adds prompt-controlled community joining through the attached AdsPower browser. A separate maximum of 0–20 new joins is recorded in the accepted plan. The app verifies the exact community and account, clicks Join once, and checks membership. Already-present memberships and uncertain outcomes remain distinct in reports. Existing task prompts and historical snapshots are preserved. No browser extension is required.
+Version 1.16.0 adds visible-link navigation, browser pointer input, on-site Reddit search with verified filters, and task-page history return. Gradual scrolling and local pacing remain prompt-controlled. Reports distinguish input acknowledgments, direct source/rules routes and failures. Existing settings, profiles, tasks and reports remain preserved.
 
-Local synthetic validation does not guarantee compatibility with every live Reddit layout. No live Reddit actions were used to prepare this release.
+Browser pointer input does not necessarily move the Windows desktop cursor. Local synthetic validation does not guarantee every live Reddit layout; no live Reddit actions were used to prepare this release.
 
-The signed manifest is latest.json. Executables use immutable versioned filenames; the updater verifies their signature, size and SHA-256 before replacement. This repository contains no credentials or user account data.
+The signed manifest is latest.json. The updater verifies signature, executable size and SHA-256 before replacement. This repository contains no credentials or user account data.
