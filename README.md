@@ -4,9 +4,19 @@ Windows application downloads and the signed update feed for Reddit Task Desk.
 
 ## Download
 
-[Download RedditTaskDesk-1.10.1.0.exe](https://raw.githubusercontent.com/toka2016/reddit-task-desk-updates/main/RedditTaskDesk-1.10.1.0.exe)
+[Download RedditTaskDesk-1.11.0.0.exe](https://raw.githubusercontent.com/toka2016/reddit-task-desk-updates/main/RedditTaskDesk-1.11.0.0.exe)
 
 Close your previous copy, keep the application in a writable folder, then run the executable. Windows with .NET Framework 4.7.2 or later is required. Existing settings, profiles, tasks and reports stay in the same data folder. If you use a custom `--data-dir`, continue using that argument.
+
+## Automatic AdsPower profile import in 1.11.0
+
+Open AdsPower with Local API enabled and save its connection in the app. **Profiles** automatically imports the available profiles at startup and after connection changes, using the saved MCP connection. **Refresh from AdsPower** runs it manually; **Cancel sync** stops an active import. The automatic option is visible and can be disabled.
+
+The import reads profile IDs and names without opening profile browsers or requesting model generation. It adds new IDs once and preserves existing custom names, expected Reddit usernames, task bindings and reports. Profiles absent from a later response are not deleted. Profiles removed in this app stay excluded until **Restore hidden profiles** is selected.
+
+A valid, unambiguous Reddit username in explicit AdsPower Reddit-platform metadata can prefill the expected account. Otherwise the profile shows **Account not set**: edit it once to enter the expected Reddit username before creating tasks. Metadata does not establish which account is signed in; session identity checks remain in place.
+
+All pages must be fetched successfully before settings change. Errors leave existing data intact and appear in Profiles and Activity. Automatic import yields to active, queued and imminent scheduled sessions. Private response fields such as account passwords, cookies and proxy credentials are not saved or sent to a model.
 
 ## A clear app shortcut in 1.10.1
 
