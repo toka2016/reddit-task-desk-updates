@@ -4,9 +4,19 @@ Windows application downloads and the signed update feed for Reddit Task Desk.
 
 ## Download
 
-[Download RedditTaskDesk-1.11.1.0.exe](https://raw.githubusercontent.com/toka2016/reddit-task-desk-updates/main/RedditTaskDesk-1.11.1.0.exe)
+[Download RedditTaskDesk-1.12.0.0.exe](https://raw.githubusercontent.com/toka2016/reddit-task-desk-updates/main/RedditTaskDesk-1.12.0.0.exe)
 
 Close your previous copy, keep the application in a writable folder, then run the executable. Windows with .NET Framework 4.7.2 or later is required. Existing settings, profiles, tasks and reports stay in the same data folder. If you use a custom `--data-dir`, continue using that argument.
+
+## Natural browsing in 1.12.0
+
+Open **Settings > Browsing pace**, select **Natural browsing**, then **Save browsing pace**. This preset uses a 20-second minimum on a readable page, a 4-second action interval, a 3-second pause after scrolling, page reuse, viewport-first reading, and gradual movement by 65% of the viewport. Every option remains editable. Presets are drafts until saved; new sessions receive the saved values.
+
+Ordinary feed, search and post observations now start with on-screen text. More of a long question and its discussion becomes available through permitted scrolling. The app avoids bulk-expanding replies during ordinary reads; collapsed content is reported as unread. Dedicated rule pages retain bounded loaded-text extraction. Preparation control inspections follow the visible viewport; authorized exact-text publication retains a loaded composer-control inventory so the approved editor remains reachable, while textual observations still follow the saved reading mode.
+
+Gradual scrolling uses short awaited movements with cancellable local pauses and fresh account/page checks. The browser's reduced-motion preference uses a single movement. These waits add no model turns, but additional reading requests can affect usage. Stop and the session deadline cancel remaining movements. Session duration and action/scroll limits remain ceilings, not activity targets.
+
+Upgrades preserve existing custom waits, page-reuse choices and guidance. Missing new global options resolve to visible reading On, gradual scrolling On and 65% distance. Historical queued sessions and pending drafts keep their captured behavior. Reports and instruction previews show the selected behavior and actual added waits. This does not simulate mouse movement, conceal automation or bypass verification challenges.
 
 ## One clear launch file and an app icon in 1.11.1
 
