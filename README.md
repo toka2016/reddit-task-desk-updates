@@ -1,7 +1,7 @@
 # Reddit Task Desk updates
 
-Current release: **1.16.6.0**.
+Current release: **1.16.7.0**.
 
 The signed updater feed is `latest.json`. The app verifies the publisher signature, executable hash, size and version before installation.
 
-Version 1.16.6 verifies the signed-in Reddit account once at session start. Browsing and actions then reuse that session binding without reopening or rescanning the account menu. New sessions verify again. Visible CAPTCHA, login and access-block detection remains active. Existing tasks, custom instructions and action history are preserved.
+Version 1.16.7 improves observed post-link navigation through nested shadow content. Returns to previously observed Home, Popular and All feeds prefer verified browser history, and unavailable links receive specific numeric diagnostics. Account verification remains once at session start. Existing task settings, custom instructions and action history are preserved. The separate AdsPower profile-import error remains unresolved.
