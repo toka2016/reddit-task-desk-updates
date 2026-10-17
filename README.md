@@ -1,15 +1,15 @@
 # Reddit Task Desk updates
 
-Current release: **1.16.4**.
+Current release: **1.16.5**.
 
 This repository hosts the signed Windows update feed and versioned executable for Reddit Task Desk. The app verifies the signed manifest and executable hash before installing an update.
 
-## Release 1.16.4
+## Release 1.16.5
 
-Account verification uses native browser pointer input for the observed account control when supported, rechecks the control before clicking, and confirms the account from fresh UI evidence. A click acknowledgement is not proof of identity. An uncertain click is not repeated. Older compatible servers retain one validated DOM fallback, and account-menu failures include a fixed activation diagnostic.
+When the account-menu control changes before clicking, the adapter can discard the stale reference and bind the current eligible control again at most twice. Each attempt stays on the original page and account, rechecks current identity and the control, and stops on persistent instability. Dispatched or uncertain opener clicks are never repeated.
 
-User task/profile data and custom instructions remain unchanged. The separate profile-import plain-text error is not claimed fixed.
+Fixed diagnostics identify changed nodes, markers, metadata, ancestry, page, account or expiry, and report the refresh count. User profiles, tasks, schedules, custom instructions and action history are preserved.
 
-Verification used offline DOM and MCP fixtures. The user's exact live Reddit layout was not reproduced, and no live Reddit actions were performed.
+Verification uses offline DOM and MCP fixtures. The user's exact live Reddit layout was not reproduced, and no live Reddit action was performed.
 
 Use the app's **Settings → Updates** or the versioned executable referenced in `latest.json`.
