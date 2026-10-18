@@ -1,11 +1,11 @@
 # Reddit Task Desk updates
 
-Current release: **1.17.1.0**.
+Current release: **1.17.2.0**.
 
-The signed updater feed is `latest.json`. The app verifies publisher signature, executable hash, size and version before installation.
+The signed updater feed is `latest.json`. The app verifies publisher signature, executable hash, size and version before installation. Use the existing application with automatic updates enabled; installation waits for an idle state. Settings and action history stay in their existing data folder.
 
-1.17.1 improves native Windows input startup compatibility. It waits briefly for the exact AdsPower window marker and initial foreground/page focus; it sends no repeated activation. Cursor movement uses one position request and bounded read-only settling, then retains exact target/foreground checks before clicks. Calibration avoids expecting a new event from zero movement. Numeric pointer diagnostics do not assume human interference.
+1.17.2 improves native Windows foreground and pointer readiness using bounded observations after one activation/placement request. Known readiness failures before click/key/wheel dispatch are recoverable without new permanent pauses. During reasoning, recovery uses fresh inspection within existing task limits. Unknown or possibly submitted actions are never automatically repeated; historical manual-intervention blockers remain preserved.
 
-Profile-import connection failures now identify the local connect stage. The reported generic RPC -32603 root cause is not established or claimed fixed. Existing settings, prompts, profiles, action permissions and history remain preserved. Native Windows input remains enabled when saved; no silent browser-input fallback is added.
+Profile import retries eligible unclassified plain-text responses on the same page at most twice, without importing partial lists. Known subscription or permission failures remain distinct. The editable Workflow guide explains bounded recovery; only the exact previous bundled default is migrated, preserving custom and empty guidance.
 
-Built against Microsoft .NET Framework 4.7.2. Focused driver, DOM, integration, connection, identity and instruction tests passed offline. The shipped original 1.16.7 updater accepted the signed package. **Actual Windows/RDP, AdsPower native input and installed upgrade remain unverified here.** No VPS connection or live Reddit action was performed.
+Built against Microsoft .NET Framework 4.7.2. Focused offline regression suites passed. The unchanged original 1.16.7 updater accepted the signed 1.17.2 package using the original pinned key. **Actual Windows/RDP, AdsPower native input, live Reddit and installed upgrading remain unverified here.** Native mouse and keyboard still need an unlocked interactive desktop; this release cannot guarantee foreground access or completion of every task.
