@@ -1,11 +1,13 @@
 # Reddit Task Desk updates
 
-Current release: **1.17.2.0**.
+Current release: **1.17.3.0**.
 
-The signed updater feed is `latest.json`. The app verifies publisher signature, executable hash, size and version before installation. Use the existing application with automatic updates enabled; installation waits for an idle state. Settings and action history stay in their existing data folder.
+The signed updater feed is `latest.json`. The existing app verifies the publisher signature, executable hash, size and version. Automatic installation waits for an idle state and keeps the existing data folder.
 
-1.17.2 improves native Windows foreground and pointer readiness using bounded observations after one activation/placement request. Known readiness failures before click/key/wheel dispatch are recoverable without new permanent pauses. During reasoning, recovery uses fresh inspection within existing task limits. Unknown or possibly submitted actions are never automatically repeated; historical manual-intervention blockers remain preserved.
+The configured reasoning model now starts before browser/account preparation. It calls `prepare_session`, receives readiness diagnostics, and chooses cancellable waits and retries within the same session time and token budget. No fixed two-attempt quota applies. Plan acceptance, browsing and actions remain unavailable until the expected account is verified. Repeated preparation after success reuses that binding.
 
-Profile import retries eligible unclassified plain-text responses on the same page at most twice, without importing partial lists. Known subscription or permission failures remain distinct. The editable Workflow guide explains bounded recovery; only the exact previous bundled default is migrated, preserving custom and empty guidance.
+Native startup can try one guarded real Windows click on a verified exposed title-bar point of the exact AdsPower window after the initial foreground request fails. No uncertain click is repeated. An unavailable desktop can be rechecked during preparation only when the native error proves no input may have been sent; the app does not unlock Windows or bypass desktop restrictions. Confirmed profile cleanup ownership survives same-profile preparation retries.
 
-Built against Microsoft .NET Framework 4.7.2. Focused offline regression suites passed. The unchanged original 1.16.7 updater accepted the signed 1.17.2 package using the original pinned key. **Actual Windows/RDP, AdsPower native input, live Reddit and installed upgrading remain unverified here.** Native mouse and keyboard still need an unlocked interactive desktop; this release cannot guarantee foreground access or completion of every task.
+The Tasks panel now identifies saved profile/task issues and their original session separately from the latest outcome. Historical blockers and unknown actions remain preserved. Inspect prior uncertain input before using Retry after fix; creating a task does not clear an old profile issue.
+
+Built against Microsoft .NET Framework 4.7.2. Focused offline regressions passed. The unchanged shipped 1.16.7 updater accepted the signed package using the original pinned key. **Actual Windows/RDP operation, installed upgrading, AdsPower native input and live Reddit remain unverified here.** Native mouse and keyboard require an unlocked interactive desktop. Recovery does not guarantee every goal will complete.
