@@ -10,10 +10,12 @@ Startup verifies the expected Reddit account without avatar input before native 
 
 ## Next release candidate
 
-**1.17.19.0 is built and locally validated, but is not yet published to the automatic-update feed.** Publication requires the original publisher signing key.
+**1.17.20.0 is built and locally validated, but is not yet published to the automatic-update feed.** Publication requires the original publisher signing key.
 
-The candidate separates account verification from desktop readiness, preserves the current session's verified account through desktop-only preparation retries, and retries only missing page observations within bounded read-only limits. It preserves the 1.17.18 startup features and historical uncertainty protections.
+Adds **Focus browser for startup** in the Tasks toolbar after a known no-input initial activation failure. While the app is foreground, the owner can request ordinary Windows activation of the exact pinned profile window. Fresh preparation still verifies the account and native readiness before any plan or task browsing. The control cannot reactivate an already prepared session, reacquire established lost focus, repeat uncertain input, reset automatic activation limits or target another session/profile. Windows may still decline activation; no foreground restriction is bypassed.
 
-Validation passed: 307 focused offline/loopback groups, 175 synthetic DOM checks, and 29 Windows settings UI assertions. The UI fixture's expected native save-error dialog was acknowledged separately. These checks do not establish live AdsPower/Google/Reddit operation, actual browser input, or an installed upgrade. No real Reddit task or social action was run for these checks.
+The candidate also retains the 1.17.19 account/readiness diagnostics and bounded missing-page observation fixes, along with the 1.17.18 clean startup features.
+
+Validation passed: 143 focused offline groups and seven Windows toolbar UI groups, including minimum-size layout. A scoped native test used the compiled candidate and exact marked browser; real Windows activation was accepted and the bound browser was observed foreground. Only the waiting state in a standalone driver instance was simulated. No native mouse/keyboard input or Reddit task was run. This does not establish full live task completion, and the reported earlier access-denied condition was not reproduced in current read-only checks.
 
 Built for Microsoft .NET Framework 4.7.2. Historical blockers and unknown actions remain preserved; inspect uncertain input before retrying.
