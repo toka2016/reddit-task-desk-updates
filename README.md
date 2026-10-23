@@ -1,8 +1,18 @@
 # Reddit Task Desk updates
 
-Current published release: **1.17.25.0**.
+Current published release: **1.17.26.0**.
 
-[Download the current application](RedditTaskDesk-1.17.25.0.exe). The signed update feed is [latest.json](latest.json). The app verifies the publisher signature, executable SHA-256, size and version before installation. Updates wait for an idle state and use the existing data folder.
+[Download the current application](RedditTaskDesk-1.17.26.0.exe). The signed update feed is [latest.json](latest.json). The app verifies the publisher signature, executable SHA-256, size and version before installation. Updates wait for an idle state and use the existing data folder.
+
+## Instruction sources and community rules
+
+Open **Instructions → Community rules guidance** to see and edit the application's rules-reading guidance. Choose **Save instructions** to apply it to sessions created afterward. Clearing this section removes the app's additional reading mandate; a custom task prompt or another saved guide may still request rules reading. Respecting an observed restriction and proving a page was read remain different concepts.
+
+The default requests rules before participation, without requiring a rules-page visit for read-only tasks. Exact old bundled Agent Rules move their reading instructions into this section. Custom Agent Rules remain unchanged. Queued and historical session snapshots retain their original instruction semantics, including the older fixed tool-description wording where applicable.
+
+Use **Instruction sources** for a map of application instruction origins, phases, edit locations and fixed technical contracts. The selected task's full effective preview is included, with later publication templates explicitly labelled. Use **Preview instructions** to inspect unsaved drafts, or **Sessions → Recorded instructions** to inspect captured session payloads. Search for `rules`, `suffix`, `startup`, or another term using the viewer's search controls. Viewing alone makes no model or browser request.
+
+The map explains application-owned instructions. It does not reveal provider-internal instructions or pretend to reconstruct unrecorded historical requests or future tool results. Account verification, exact action targets/text, budgets, emergency release and unknown-action replay checks remain technical controls; editing guidance cannot redefine tool schemas or bypass those checks.
 
 ## Startup window recovery
 
@@ -29,8 +39,8 @@ Task input uses the Windows pointer. **Ctrl+Alt+F8** or **Escape** restores the 
 
 ## Updating and validation
 
-The release builds on published 1.17.24.0. Default footer and startup choices preserve existing behavior. The data-folder location and publisher trust key are unchanged. This version does not incorporate unrelated unpublished 1.17.19–1.17.22 changes.
+The release builds on published 1.17.25.0. Default footer and startup choices preserve existing behavior. The data-folder location and publisher trust key are unchanged. This version does not incorporate unrelated unpublished 1.17.19–1.17.22 changes.
 
-Use **Settings → Updates → Check for updates**, then confirm running version **1.17.25.0** after restart. Automatic-update availability does not prove installation on every computer. Each copy must reach the configured feed, have updates enabled and become idle. In-place replacement can retain an older executable filename.
+Use **Settings → Updates → Check for updates**, then confirm running version **1.17.26.0** after restart. Automatic-update availability does not prove installation on every computer. Each copy must reach the configured feed, have updates enabled and become idle. In-place replacement can retain an older executable filename.
 
 Local application/test builds and focused offline policy/controller regression checks are recorded with the release. Native Windows rendering/input, a live AdsPower/Reddit session and an installed upgrade on the user's VPS have not been tested from this environment.
