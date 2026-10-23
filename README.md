@@ -10,12 +10,16 @@ Startup verifies the expected Reddit account without avatar input before native 
 
 ## Next release candidate
 
-**1.17.20.0 is built and locally validated, but is not yet published to the automatic-update feed.** Publication requires the original publisher signing key.
+**1.17.21.0 is built and locally validated, but is not yet published to the automatic-update feed.** Publication requires the original publisher signing key.
 
-Adds **Focus browser for startup** in the Tasks toolbar after a known no-input initial activation failure. While the app is foreground, the owner can request ordinary Windows activation of the exact pinned profile window. Fresh preparation still verifies the account and native readiness before any plan or task browsing. The control cannot reactivate an already prepared session, reacquire established lost focus, repeat uncertain input, reset automatic activation limits or target another session/profile. Windows may still decline activation; no foreground restriction is bypassed.
+Known returns to an observed community listing or feed now prefer the app's bounded, verified browser history path before a header link can reload the listing or fail outside the viewport. Post navigation still requires a currently visible eligible link. One-pixel clipped links are rejected before native pointer placement.
 
-The candidate also retains the 1.17.19 account/readiness diagnostics and bounded missing-page observation fixes, along with the 1.17.18 clean startup features.
+Foreground-loss diagnostics now describe the already-observed window/process relation: this app, the bound browser process, another process, or no foreground window. They include no window titles or page text. Diagnostics send no input, do not reacquire focus and cannot mask the stopping condition.
 
-Validation passed: 143 focused offline groups and seven Windows toolbar UI groups, including minimum-size layout. A scoped native test used the compiled candidate and exact marked browser; real Windows activation was accepted and the bound browser was observed foreground. Only the waiting state in a standalone driver instance was simulated. No native mouse/keyboard input or Reddit task was run. This does not establish full live task completion, and the reported earlier access-denied condition was not reproduced in current read-only checks.
+The reported run passed account verification, native readiness and read-only plan acceptance, opened one post, then later lost foreground while verifying a wheel event. The old log cannot identify which window took focus. The separate native screenshot limitation remains unresolved; it did not stop text browsing. This candidate does not claim a remedy for the external focus change or full live task completion. Established focus loss and uncertain input still stop further native input.
 
-Built for Microsoft .NET Framework 4.7.2. Historical blockers and unknown actions remain preserved; inspect uncertain input before retrying.
+Validation passed: 187 focused offline groups and 50 browser DOM groups, including explicit and post-to-post community returns, lost-focus diagnostics, input failure policy, unknown-action preservation and screenshot authority boundaries. The listing-return regression failed before the fix and passed afterward. No live Reddit task, native Windows input or screenshot test was run for 1.17.21.
+
+The candidate retains the earlier startup focus handoff, account/readiness diagnostics, bounded missing-page observation fixes and clean startup features. Built for Microsoft .NET Framework 4.7.2. Historical blockers and unknown actions remain preserved; inspect uncertain input before retrying.
+
+The local Desktop shortcut opens the candidate after the older app is closed and the shortcut is reopened. The current signed automatic-update release remains **1.17.18.0**.
