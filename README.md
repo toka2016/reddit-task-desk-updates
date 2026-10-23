@@ -10,16 +10,14 @@ Startup verifies the expected Reddit account without avatar input before native 
 
 ## Next release candidate
 
-**1.17.21.0 is built and locally validated, but is not yet published to the automatic-update feed.** Publication requires the original publisher signing key.
+**1.17.22.0 is built and locally validated, but is not yet published to the automatic-update feed.** Publication requires the original publisher signing key.
 
-Known returns to an observed community listing or feed now prefer the app's bounded, verified browser history path before a header link can reload the listing or fail outside the viewport. Post navigation still requires a currently visible eligible link. One-pixel clipped links are rejected before native pointer placement.
+Adds **Instructions → Always use direct Reddit entry**. When saved, a new clean session opens Reddit Home directly, then performs the same account verification, native readiness and finite-plan checks. The setting is frozen into the session, instruction preview and report. Unchecked or missing values retain the earlier 70% direct Reddit / 30% Google choice. Preparation retries keep the selected route.
 
-Foreground-loss diagnostics now describe the already-observed window/process relation: this app, the bound browser process, another process, or no foreground window. They include no window titles or page text. Diagnostics send no input, do not reacquire focus and cannot mask the stopping condition.
+Read-only inspection of a failed startup found a visible Reddit result whose actual Google anchor was an opaque `/goto` URL. Its displayed citation did not establish the destination before a click. These rendered opaque result links now end the session with **GOOGLE_RESULT_DESTINATION_UNVERIFIED**, a compatibility explanation and guidance to save direct startup for a new session. They are not clicked or guessed. No automatic direct fallback, new persistent profile/task pause, Reddit account-access block or task authority is introduced.
 
-The reported run passed account verification, native readiness and read-only plan acceptance, opened one post, then later lost foreground while verifying a wheel event. The old log cannot identify which window took focus. The separate native screenshot limitation remains unresolved; it did not stop text browsing. This candidate does not claim a remedy for the external focus change or full live task completion. Established focus loss and uncertain input still stop further native input.
+Validation passed: **128 focused offline groups, 49 browser DOM groups and eight Windows settings UI groups**, including the direct choice overriding a Google draw, frozen settings, historical behavior, opaque-link no-replay, unknown-action preservation and minimum-size layout. The opaque-link regression failed against the prior payload and passed against the candidate. Live Google DOM was inspected read-only; no live native Reddit task or full three-post completion is claimed.
 
-Validation passed: 187 focused offline groups and 50 browser DOM groups, including explicit and post-to-post community returns, lost-focus diagnostics, input failure policy, unknown-action preservation and screenshot authority boundaries. The listing-return regression failed before the fix and passed afterward. No live Reddit task, native Windows input or screenshot test was run for 1.17.21.
+The candidate retains known-listing history returns, foreground-loss diagnostics, the startup focus handoff, bounded page observations and clean-tab startup. Earlier foreground interruptions and native screenshot limitations are separate and remain unresolved. Established focus loss and uncertain input still stop native input; historical issues remain preserved.
 
-The candidate retains the earlier startup focus handoff, account/readiness diagnostics, bounded missing-page observation fixes and clean startup features. Built for Microsoft .NET Framework 4.7.2. Historical blockers and unknown actions remain preserved; inspect uncertain input before retrying.
-
-The local Desktop shortcut opens the candidate after the older app is closed and the shortcut is reopened. The current signed automatic-update release remains **1.17.18.0**.
+Built for Microsoft .NET Framework 4.7.2. The local Desktop shortcut opens the candidate after it is reopened. The current signed automatic-update release remains **1.17.18.0**.
