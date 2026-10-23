@@ -1,8 +1,14 @@
 # Reddit Task Desk updates
 
-Current published release: **1.17.24.0**.
+Current published release: **1.17.25.0**.
 
-[Download the current application](RedditTaskDesk-1.17.24.0.exe). The signed update feed is [latest.json](latest.json). The app verifies the publisher signature, executable SHA-256, size and version before installation. Updates wait for an idle state and use the existing data folder.
+[Download the current application](RedditTaskDesk-1.17.25.0.exe). The signed update feed is [latest.json](latest.json). The app verifies the publisher signature, executable SHA-256, size and version before installation. Updates wait for an idle state and use the existing data folder.
+
+## Startup window recovery
+
+Version 1.17.25 fixes dedicated-desktop preparation being permanently marked incomplete after a native window lookup failed before any application close request. A bounded, cancellable observation period tolerates delayed native window-title updates. A later preparation attempt may retry when no close request was attempted. Actual attempted closes, including refused or uncertain requests, retain their no-repeat protection.
+
+Logs now distinguish page marker verification, absent or ambiguous native marker matches, and whether the exact window matches the foreground window. A background window can still be identified; foreground mismatch is not proof of occlusion. No guessed window, forced process termination, or save-dialog dismissal is used. Failed page-marker cleanup retains its nonce for exact cleanup before a retry.
 
 ## Editable behavior settings
 
@@ -23,8 +29,8 @@ Task input uses the Windows pointer. **Ctrl+Alt+F8** or **Escape** restores the 
 
 ## Updating and validation
 
-The release builds on published 1.17.23.0. Default footer and startup choices preserve existing behavior. The data-folder location and publisher trust key are unchanged. This version does not incorporate unrelated unpublished 1.17.19–1.17.22 changes.
+The release builds on published 1.17.24.0. Default footer and startup choices preserve existing behavior. The data-folder location and publisher trust key are unchanged. This version does not incorporate unrelated unpublished 1.17.19–1.17.22 changes.
 
-Use **Settings → Updates → Check for updates**, then confirm running version **1.17.24.0** after restart. Automatic-update availability does not prove installation on every computer. Each copy must reach the configured feed, have updates enabled and become idle. In-place replacement can retain an older executable filename.
+Use **Settings → Updates → Check for updates**, then confirm running version **1.17.25.0** after restart. Automatic-update availability does not prove installation on every computer. Each copy must reach the configured feed, have updates enabled and become idle. In-place replacement can retain an older executable filename.
 
-Local builds and focused offline policy/controller checks are recorded with the release. UI regression tests compile, but rendered UI checks could not run because the host denied the display server's local socket creation. They do not certify native Windows rendering/input, a live AdsPower/Reddit session or an installed upgrade on the user's VPS.
+Local application/test builds and focused offline policy/controller regression checks are recorded with the release. Native Windows rendering/input, a live AdsPower/Reddit session and an installed upgrade on the user's VPS have not been tested from this environment.
