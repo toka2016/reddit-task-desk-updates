@@ -1,25 +1,30 @@
 # Reddit Task Desk updates
 
-Current published release: **1.17.23.0**.
+Current published release: **1.17.24.0**.
 
-[Download the current application](RedditTaskDesk-1.17.23.0.exe). The signed automatic-update feed is [latest.json](latest.json). The application verifies the original publisher signature, executable SHA-256, size and version. Installation waits for an idle state and uses the existing data folder.
+[Download the current application](RedditTaskDesk-1.17.24.0.exe). The signed update feed is [latest.json](latest.json). The app verifies the publisher signature, executable SHA-256, size and version before installation. Updates wait for an idle state and use the existing data folder.
+
+## Editable behavior settings
+
+Open **Instructions** to edit the comment footer, startup route probability, desktop-input options and shared guidance, then choose **Save instructions**.
+
+- **Comment footer:** choose AI-generated, AI-assisted, Custom text, or None. The sample preview shows the application's transformation. None means no automatic suffix; any suffix supplied in the original text remains. Both comments and replies use the saved setting. The default stays AI-generated until explicitly changed.
+- **Google startup percentage:** choose 0–100. Zero means direct Reddit only, 100 means Google only, and the default is 30. The value is used only with clean-tab startup. It is a probability per new session, not a required sequence of sessions. Preparation retries retain the chosen route. Startup search does not grant task-search permission.
+- **Settings map:** the page identifies where to edit the task prompt, model, reasoning effort, action limits, browsing pace, scheduling, duration, token threshold, connections and automatic updates. The selected-task shortcut opens the existing task editor.
+- **Additional behavior guidance:** editable instructions to the model are identified separately from actual runtime settings. Technical account/target checks, uncertain-action replay protection, emergency stop and tool-interface limits remain visible application constraints.
+
+Shared changes apply to new sessions after saving. Already queued/running sessions and historical drafts retain their snapshots and exact stored text. Session duration and token stop threshold have a separate live editor; during native input use **F8** for its handoff. Instruction previews show saved or explicitly marked unsaved settings without starting a model or browser.
 
 ## Dedicated task desktop
 
-Enable **Instructions → Dedicated task desktop**, then choose **Save instructions** once per installation. The saved option applies to new manual and scheduled sessions. It defaults off; publishing this update does not override an existing disabled choice or automatically close other programs.
+The existing opt-in **Dedicated task desktop** setting prepares one work tab in the configured AdsPower profile, enters Reddit through the browser connection, verifies the account, maximizes the task window and requests normal closure of other applications while retaining AdsPower and this app. Save prompts are not dismissed and processes are not force-killed.
 
-With the option enabled, startup prepares one work tab in the exact configured AdsPower profile and enters Reddit through browser control before native mouse input. It verifies the expected account without opening the avatar menu, maximizes the retained browser window, and requests ordinary closure of other application windows. AdsPower, Reddit Task Desk, the task browser and protected Windows UI remain. AdsPower process ancestry and signed identity must be verified first. A save prompt or unconfirmed closure stops preparation without force-killing or discarding content.
+Task input uses the Windows pointer. **Ctrl+Alt+F8** or **Escape** restores the mouse and stops the session; the keyboard remains available. Finalization releases the mouse and attempts to close the exact task profile, including error and stop paths. Closure is only confirmed after AdsPower reports Inactive. Unknown Reddit action results remain unknown and are never replayed automatically.
 
-After preparation, task operations use Windows mouse/keyboard input with a mouse-only reservation. Keyboard remains available. **Ctrl+Alt+F8** or **Escape** releases the mouse and stops the session. Cancellation, deadline, foreground loss and watchdog failure also release control. The native driver remains bound to its released reservation, preventing late commands from falling back to unrestricted input. Windows can remove a slow low-level hook; this implementation checks event acknowledgements and does not claim infallible exclusion.
+## Updating and validation
 
-Dedicated finalization releases the mouse and attempts to close the exact profile whose open was requested, including completion, errors, user stop, manual barriers and uncertain-input paths. Closure is only confirmed after AdsPower reports `Inactive`. Unknown actions and unresolved historical issues remain recorded; closure does not authorize replay. If AdsPower cannot confirm closure, the report states that failure.
+The release builds on published 1.17.23.0. Default footer and startup choices preserve existing behavior. The data-folder location and publisher trust key are unchanged. This version does not incorporate unrelated unpublished 1.17.19–1.17.22 changes.
 
-## Compatibility and rollout
+Use **Settings → Updates → Check for updates**, then confirm running version **1.17.24.0** after restart. Automatic-update availability does not prove installation on every computer. Each copy must reach the configured feed, have updates enabled and become idle. In-place replacement can retain an older executable filename.
 
-1.17.23.0 is newer than 1.17.18.0, standalone 1.17.18.1 and candidate 1.17.22.0. It is based on 1.17.18 plus the dedicated-desktop changes and does not incorporate the unpublished 1.17.19–1.17.22 enhancements. The baseline keeps its 70% direct Reddit / 30% Google entry choice. Existing data-folder location and update trust key are unchanged; compatibility with unknown fields from unpublished candidates has not been certified. Keep a data backup when switching from an unpublished candidate.
-
-Automatic-update availability is not proof of installation on every computer. Each running copy must use this feed, have automatic updates enabled, reach its check and become idle. Use **Settings → Updates → Check for updates** to check immediately, and confirm running version **1.17.23.0** after restart. The executable filename can still contain an older number because replacement happens in place.
-
-## Validation
-
-The unchanged dedicated-desktop implementation passed 11 focused offline/local-protocol routes. Release application/test builds, updater compatibility and the original publisher verifier were checked before feed activation. No native Windows input, live AdsPower/Google/Reddit task, rendered Windows UI or installed-upgrade test is claimed. Windows acceptance testing remains necessary for each actual desktop environment.
+Local builds and focused offline policy/controller checks are recorded with the release. UI regression tests compile, but rendered UI checks could not run because the host denied the display server's local socket creation. They do not certify native Windows rendering/input, a live AdsPower/Reddit session or an installed upgrade on the user's VPS.
