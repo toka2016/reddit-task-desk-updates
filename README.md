@@ -1,23 +1,25 @@
 # Reddit Task Desk updates
 
-Current published release: **1.17.18.0**.
+Current published release: **1.17.23.0**.
 
-[Download the current application](RedditTaskDesk-1.17.18.0.exe). The signed automatic-update feed is [latest.json](latest.json). The app verifies the original publisher signature, executable hash, size and version. Installation waits for an idle state and keeps the existing data folder.
+[Download the current application](RedditTaskDesk-1.17.23.0.exe). The signed automatic-update feed is [latest.json](latest.json). The application verifies the original publisher signature, executable SHA-256, size and version. Installation waits for an idle state and uses the existing data folder.
 
-Version 1.17.18 adds the saved **Start with one clean tab (70% direct Reddit / 30% Google)** option. When enabled, startup creates a verified work tab in the configured AdsPower profile and closes that profile's recorded pre-existing page tabs, including unsaved drafts. Cookies and sign-in state remain. Each new session chooses its startup route once; preparation retries retain the route and completed cleanup. The startup Google query grants no task search permission. Google challenge, consent or login barriers stop the current run without declaring the Reddit account blocked.
+## Dedicated task desktop
 
-Startup verifies the expected Reddit account without avatar input before native readiness, issue recovery or task planning. Bounded ordinary Windows activation does not depend on querying another foreground application's GUI thread. Strict checks still apply before title-bar pointer placement or click. Established foreground loss, Escape and uncertain input remain stopping conditions; no browser-input fallback or challenge bypass is introduced.
+Enable **Instructions → Dedicated task desktop**, then choose **Save instructions** once per installation. The saved option applies to new manual and scheduled sessions. It defaults off; publishing this update does not override an existing disabled choice or automatically close other programs.
 
-## Next release candidate
+With the option enabled, startup prepares one work tab in the exact configured AdsPower profile and enters Reddit through browser control before native mouse input. It verifies the expected account without opening the avatar menu, maximizes the retained browser window, and requests ordinary closure of other application windows. AdsPower, Reddit Task Desk, the task browser and protected Windows UI remain. AdsPower process ancestry and signed identity must be verified first. A save prompt or unconfirmed closure stops preparation without force-killing or discarding content.
 
-**1.17.22.0 is built and locally validated, but is not yet published to the automatic-update feed.** Publication requires the original publisher signing key.
+After preparation, task operations use Windows mouse/keyboard input with a mouse-only reservation. Keyboard remains available. **Ctrl+Alt+F8** or **Escape** releases the mouse and stops the session. Cancellation, deadline, foreground loss and watchdog failure also release control. The native driver remains bound to its released reservation, preventing late commands from falling back to unrestricted input. Windows can remove a slow low-level hook; this implementation checks event acknowledgements and does not claim infallible exclusion.
 
-Adds **Instructions → Always use direct Reddit entry**. When saved, a new clean session opens Reddit Home directly, then performs the same account verification, native readiness and finite-plan checks. The setting is frozen into the session, instruction preview and report. Unchecked or missing values retain the earlier 70% direct Reddit / 30% Google choice. Preparation retries keep the selected route.
+Dedicated finalization releases the mouse and attempts to close the exact profile whose open was requested, including completion, errors, user stop, manual barriers and uncertain-input paths. Closure is only confirmed after AdsPower reports `Inactive`. Unknown actions and unresolved historical issues remain recorded; closure does not authorize replay. If AdsPower cannot confirm closure, the report states that failure.
 
-Read-only inspection of a failed startup found a visible Reddit result whose actual Google anchor was an opaque `/goto` URL. Its displayed citation did not establish the destination before a click. These rendered opaque result links now end the session with **GOOGLE_RESULT_DESTINATION_UNVERIFIED**, a compatibility explanation and guidance to save direct startup for a new session. They are not clicked or guessed. No automatic direct fallback, new persistent profile/task pause, Reddit account-access block or task authority is introduced.
+## Compatibility and rollout
 
-Validation passed: **128 focused offline groups, 49 browser DOM groups and eight Windows settings UI groups**, including the direct choice overriding a Google draw, frozen settings, historical behavior, opaque-link no-replay, unknown-action preservation and minimum-size layout. The opaque-link regression failed against the prior payload and passed against the candidate. Live Google DOM was inspected read-only; no live native Reddit task or full three-post completion is claimed.
+1.17.23.0 is newer than 1.17.18.0, standalone 1.17.18.1 and candidate 1.17.22.0. It is based on 1.17.18 plus the dedicated-desktop changes and does not incorporate the unpublished 1.17.19–1.17.22 enhancements. The baseline keeps its 70% direct Reddit / 30% Google entry choice. Existing data-folder location and update trust key are unchanged; compatibility with unknown fields from unpublished candidates has not been certified. Keep a data backup when switching from an unpublished candidate.
 
-The candidate retains known-listing history returns, foreground-loss diagnostics, the startup focus handoff, bounded page observations and clean-tab startup. Earlier foreground interruptions and native screenshot limitations are separate and remain unresolved. Established focus loss and uncertain input still stop native input; historical issues remain preserved.
+Automatic-update availability is not proof of installation on every computer. Each running copy must use this feed, have automatic updates enabled, reach its check and become idle. Use **Settings → Updates → Check for updates** to check immediately, and confirm running version **1.17.23.0** after restart. The executable filename can still contain an older number because replacement happens in place.
 
-Built for Microsoft .NET Framework 4.7.2. The local Desktop shortcut opens the candidate after it is reopened. The current signed automatic-update release remains **1.17.18.0**.
+## Validation
+
+The unchanged dedicated-desktop implementation passed 11 focused offline/local-protocol routes. Release application/test builds, updater compatibility and the original publisher verifier were checked before feed activation. No native Windows input, live AdsPower/Google/Reddit task, rendered Windows UI or installed-upgrade test is claimed. Windows acceptance testing remains necessary for each actual desktop environment.
