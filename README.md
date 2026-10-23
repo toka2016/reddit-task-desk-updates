@@ -1,8 +1,16 @@
 # Reddit Task Desk updates
 
-Current published release: **1.17.26.0**.
+Current published release: **1.17.27.0**.
 
-[Download the current application](RedditTaskDesk-1.17.26.0.exe). The signed update feed is [latest.json](latest.json). The app verifies the publisher signature, executable SHA-256, size and version before installation. Updates wait for an idle state and use the existing data folder.
+[Download the current application](RedditTaskDesk-1.17.27.0.exe). The signed update feed is [latest.json](latest.json). The app verifies the publisher signature, executable SHA-256, size and version before installation. Updates wait for an idle state and use the existing data folder.
+
+## Other windows and startup readiness
+
+Version 1.17.27 treats an unavailable signed AdsPower ancestor as a warning when preparing optional closure of other applications, provided no close request has been attempted. All other windows are left open. The exact task browser must still be identified, maximized and verified as the foreground window before native input or mouse reservation. Unreadable browser identity, ambiguous markers, desktop-access failures and incomplete or uncertain close attempts do not use this fallback.
+
+The warning appears in Activity, the preparation response and the session report. The report describes the configured desktop behavior separately from what actually happened. Account verification is reported independently of full startup readiness; a verified account alone never authorizes task actions. The owned temporary workspace marker must be confirmed removed before this preparation stage succeeds.
+
+An AdsPower response such as `Exceeding open daily limit, recovery after 9 hours` is a separate provider-side refusal to open a profile. This release does not remove that limit or guarantee an exact recovery time. Its original diagnostic remains visible.
 
 ## Instruction sources and community rules
 
@@ -33,14 +41,14 @@ Shared changes apply to new sessions after saving. Already queued/running sessio
 
 ## Dedicated task desktop
 
-The existing opt-in **Dedicated task desktop** setting prepares one work tab in the configured AdsPower profile, enters Reddit through the browser connection, verifies the account, maximizes the task window and requests normal closure of other applications while retaining AdsPower and this app. Save prompts are not dismissed and processes are not force-killed.
+The existing opt-in **Dedicated task desktop** setting prepares one work tab in the configured AdsPower profile, enters Reddit through the browser connection, verifies the account, maximizes the task window and requests normal closure of other applications while retaining AdsPower and this app. If its signed AdsPower ancestor cannot be verified before any close attempt, it preserves other applications and records the warning described above. Save prompts are not dismissed and processes are not force-killed.
 
 Task input uses the Windows pointer. **Ctrl+Alt+F8** or **Escape** restores the mouse and stops the session; the keyboard remains available. Finalization releases the mouse and attempts to close the exact task profile, including error and stop paths. Closure is only confirmed after AdsPower reports Inactive. Unknown Reddit action results remain unknown and are never replayed automatically.
 
 ## Updating and validation
 
-The release builds on published 1.17.25.0. Default footer and startup choices preserve existing behavior. The data-folder location and publisher trust key are unchanged. This version does not incorporate unrelated unpublished 1.17.19–1.17.22 changes.
+The release builds on published 1.17.26.0. Default footer and startup choices preserve existing behavior. The data-folder location and publisher trust key are unchanged. This version does not incorporate unrelated unpublished 1.17.19–1.17.22 changes.
 
-Use **Settings → Updates → Check for updates**, then confirm running version **1.17.26.0** after restart. Automatic-update availability does not prove installation on every computer. Each copy must reach the configured feed, have updates enabled and become idle. In-place replacement can retain an older executable filename.
+Use **Settings → Updates → Check for updates**, then confirm running version **1.17.27.0** after restart. Automatic-update availability does not prove installation on every computer. Each copy must reach the configured feed, have updates enabled and become idle. In-place replacement can retain an older executable filename.
 
 Local application/test builds and focused offline policy/controller regression checks are recorded with the release. Native Windows rendering/input, a live AdsPower/Reddit session and an installed upgrade on the user's VPS have not been tested from this environment.
